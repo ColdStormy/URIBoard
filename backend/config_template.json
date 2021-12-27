@@ -1,0 +1,5 @@
+{
+  "admin_password": "verysecurepassword",
+  "port": 8900,
+  "secret_key": "a32characterlongkeyforyourapp12"
+}
