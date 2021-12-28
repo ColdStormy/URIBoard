@@ -1,3 +1,5 @@
 backend/bin/
 backend/config.json
 backend/uriboard
+
+.idea/

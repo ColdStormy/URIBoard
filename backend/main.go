@@ -1,12 +1,15 @@
 package main
 
 import (
+	"math/rand"
+	"time"
 	"uriboard/system"
 	"uriboard/web"
 )
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
 
-	conf := system.LoadConfiguration()
-	web.StartServer(conf)
+	system.LoadConfiguration()
+	web.StartServer()
 }

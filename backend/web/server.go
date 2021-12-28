@@ -9,18 +9,20 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func StartServer(config system.Configuration_t) {
+func StartServer() {
+
+	config := system.GetConfiguration()
 
 	e := echo.New()
 	e.Use(session.Middleware(sessions.NewCookieStore([]byte(config.SecretKey))))
-	defineRoutes(e, config)
+	defineRoutes(e)
 	e.Logger.Fatal(e.Start(fmt.Sprintf(":%d", config.Port)))
 
 }
 
-func defineRoutes(e *echo.Echo, config system.Configuration_t) {
+func defineRoutes(e *echo.Echo) {
 
-	e.GET("/", func(c echo.Context) error { return MainPage(c, config) })
+	e.GET("/", MainPage)
 
-	e.POST("/login", func(c echo.Context) error { return Login(c, config) })
+	e.POST("/login", Login)
 }

@@ -13,8 +13,9 @@ type Configuration_t struct {
 	SecretKey     string `json:"secret_key"`
 }
 
-func LoadConfiguration() Configuration_t {
-	var conf Configuration_t
+var conf Configuration_t
+
+func LoadConfiguration() {
 	jsonFile, err := os.Open("config.json")
 	if err != nil {
 		fmt.Println(err)
@@ -25,6 +26,8 @@ func LoadConfiguration() Configuration_t {
 	json.Unmarshal(byteContent, &conf)
 
 	fmt.Println("Configuration loaded successfully.")
+}
 
+func GetConfiguration() Configuration_t {
 	return conf
 }
